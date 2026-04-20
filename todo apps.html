@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Todo App</title>
+
+<style>
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  height: 100vh;
+
+  /* Background gradient qurux badan */
+  background: linear-gradient(135deg, #4facfe, #a18cd1);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Card */
+.container {
+  background: white;
+  padding: 25px;
+  width: 320px;
+  border-radius: 20px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+  text-align: center;
+}
+
+/* Title */
+h2 {
+  margin-bottom: 20px;
+}
+
+/* Input */
+input {
+  width: 65%;
+  padding: 10px;
+  border-radius: 10px;
+  border: 1px solid #ccc;
+}
+
+/* Add button */
+.add-btn {
+  padding: 10px;
+  background: #22c55e;
+  color: white;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+}
+
+/* List */
+li {
+  list-style: none;
+  background: #f1f5f9;
+  margin: 10px 0;
+  padding: 10px;
+  border-radius: 10px;
+  display: flex;
+  justify-content: space-between;
+}
+
+/* Delete button */
+.delete {
+  background: #ef4444;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  padding: 5px 10px;
+  cursor: pointer;
+}
+</style>
+
+</head>
+<body>
+
+<div class="container">
+  <h2>My Todo App</h2>
+
+  <input type="text" id="taskInput" placeholder="Qor task...">
+  <button class="add-btn" onclick="addTask()">Add</button>
+
+  <ul id="taskList"></ul>
+</div>
+
+<script>
+function addTask() {
+  let input = document.getElementById("taskInput");
+  let task = input.value;
+
+  if (task === "") {
+    alert("Wax qor!");
+    return;
+  }
+
+  let li = document.createElement("li");
+  li.textContent = task;
+
+  let btn = document.createElement("button");
+  btn.textContent = "Delete";
+  btn.className = "delete";
+
+  btn.onclick = function () {
+    li.remove();
+  };
+
+  li.appendChild(btn);
+  document.getElementById("taskList").appendChild(li);
+
+  input.value = "";
+}
+</script>
+
+</body>
+</html>
